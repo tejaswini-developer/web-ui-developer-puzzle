@@ -61,6 +61,9 @@ form {
   }
 }
 
+.link:hover{
+  text-decoration: underline;
+}
 .empty {
   display: flex;
   text-align: center;
@@ -68,5 +71,5 @@ form {
   justify-content: center;
   min-height: 50vh;
   font-size: 1.5rem;
-  color: $gray40;
+  color: $black;
 }
