@@ -23,6 +23,15 @@ export class ReadingListService {
     });
   }
 
+  async markFinished(id:string): Promise<void> {
+    this.storage.update(list => {
+      return list.map(obj => {
+        if(obj.bookId == id){obj = {...obj,finished:true,finishedDate:new Date().toISOString()}}
+        return obj;
+      })
+    });
+  }
+
   async removeBook(id: string): Promise<void> {
     this.storage.update(list => {
       return list.filter(x => x.bookId !== id);

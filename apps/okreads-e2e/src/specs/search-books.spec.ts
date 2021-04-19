@@ -22,7 +22,7 @@ describe('When: Use the search feature', () => {
       ExpectedConditions.textToBePresentInElement($('tmo-root'), 'okreads')
     );
     
-    const form = await $('form');
+    
     const input = await $('input[type="search"]');
     
     // type in search text without form submission results should appear

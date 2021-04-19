@@ -1,5 +1,5 @@
 import { $,$$, browser, ExpectedConditions } from 'protractor';
-import {expect} from 'chai';
+
 
 describe('When: I use the reading list feature', () => {
   it('Then: I should see my reading list', async () => {
@@ -24,7 +24,7 @@ describe('When: I use the reading list feature', () => {
       ExpectedConditions.textToBePresentInElement($('tmo-root'), 'okreads')
     );
     
-    const form = await $('form');
+    
     const input = await $('input[type="search"]');
 
     await input.sendKeys('java');
@@ -55,7 +55,7 @@ describe('When: I use the reading list feature', () => {
       ExpectedConditions.textToBePresentInElement($('tmo-root'), 'okreads')
     );
     
-    const form = await $('form');
+    
     const input = await $('input[type="search"]');
 
     await input.sendKeys('java');
@@ -85,7 +85,7 @@ describe('When: I use the reading list feature', () => {
         text)
     );
 
-    const removeFromReadingList = await $$('[data-testing="remove-from-readingList"]');
+    let removeFromReadingList = await $$('[data-testing="remove-from-readingList"]');
     await removeFromReadingList[0].click();
     browser.waitForAngularEnabled(false);
 
@@ -98,6 +98,39 @@ describe('When: I use the reading list feature', () => {
     addToReadingList = await $$('[data-testing="add-book-to-readinglist"]');
 
     await browser.wait(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(addToReadingList[0])), 2000);
+
+    removeFromReadingList = await $$('[data-testing="remove-from-readingList"]');
+    await removeFromReadingList[0].click();
   });
+
+  it('Then: I should mark book as finished', async () => {
+    await browser.get('/');
+    await browser.wait(
+      ExpectedConditions.textToBePresentInElement($('tmo-root'), 'okreads')
+    );
+   
+    const input = await $('input[type="search"]');
+    await input.sendKeys('java');
+    
+    let addToReadingList = await $$('[data-testing="add-book-to-readinglist"]').get(0);
+    await addToReadingList.click(); 
+    
+    const readingListToggle = await $('[data-testing="toggle-reading-list"]');
+    await readingListToggle.click();
+    
+
+    const markFinishedButton = await $$('[data-testing="mark-finished"]').get(0);
+    await markFinishedButton.click();
+    
+    addToReadingList = await $$('[data-testing="add-book-to-readinglist"]').get(0);
+
+    await browser.wait(
+      ExpectedConditions.textToBePresentInElement(
+        addToReadingList,'Finished')
+    );
+
+  });
+
+  
  
 });
