@@ -50,6 +50,7 @@
     "core-js": "^2.5.4",
     "material-design-icons": "3.0.1",
     "node-localstorage": "2.1.6",
+    "protractor": "^7.0.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.5",
     "zone.js": "^0.10.2"
@@ -83,7 +84,6 @@
     "mocha": "^7.1.2",
     "normalize.css": "8.0.1",
     "prettier": "2.0.5",
-    "protractor": "~7.0.0",
     "sinon": "^9.0.2",
     "sinon-chai": "^3.5.0",
     "ts-jest": "25.4.0",
